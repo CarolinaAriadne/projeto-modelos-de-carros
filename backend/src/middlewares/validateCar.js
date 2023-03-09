@@ -5,7 +5,7 @@ const car = joi.object({
     placa: joi.string().min(7).max(7).required(),
 });
 
-const validateCar= (req, res, next) => {
+const validateCar = (req, res, next) => {
     const { modelo, placa } = req.body;
     const { error } = car.validate({ modelo, placa});
 
