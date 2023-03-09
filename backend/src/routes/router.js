@@ -4,11 +4,10 @@ const router = express.Router();
 const CarController = require('../controllers/CarController');
 const { validateCar } = require('../middlewares/validateCar');
 
-
-router.get('/carros', CarController.getAllCars);
-router.get('/carros/:codigo', CarController.getOneCar);
+router.get('/cars', CarController.getAllCars);
+router.get('/car/:codigo', CarController.getOneCar);
 router.post('/newCar', validateCar, CarController.createCar);
-router.put('/carros/:codigo', validateCar, CarController.updateCar);
-router.delete('/carros/:codigo', CarController.deleteCar);
+router.put('/car/:codigo', validateCar, CarController.updateCar);
+router.delete('/car/:codigo', CarController.deleteCar);
 
 module.exports = router;

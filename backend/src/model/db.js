@@ -10,4 +10,3 @@ const connection = msql.createConnection({
 });
 
 module.exports = connection;
-
