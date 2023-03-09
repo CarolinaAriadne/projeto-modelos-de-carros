@@ -26,8 +26,22 @@ export default function CarsPage() {
     try {
       const response = await api.post('/newCar', { modelo, placa });
       setCars([...cars, response.data.modelo, response.data.placa]);
+      setModelo('');
+      setPlaca('');
     } catch (err) {
       setError('Dados inválidos');
+    }
+  };
+
+  const removeCar = async codigo => {
+    try {
+      await api.delete(`/car/${codigo}`);
+      const newArrayWithoutCar = cars.filter(car => {
+        return car.codigo !== codigo;
+      });
+      setCars(newArrayWithoutCar);
+    } catch (err) {
+      setError('Bad request');
     }
   };
 
@@ -58,7 +72,6 @@ export default function CarsPage() {
             name="modelo"
             type="text"
             onChange={({ target }) => setModelo(target.value)}
-            onKeyUp={disableSubmit}
             value={modelo}
           ></input>
           <input
@@ -81,7 +94,13 @@ export default function CarsPage() {
                 <p key={car.codigo}>
                   {car.modelo} {car.placa}
                 </p>
-                <button className="btn-excluir">Excluir</button>
+                <button
+                  className="btn-excluir"
+									type="button"
+                  onClick={() => removeCar(car.codigo)}
+                >
+                  Excluir
+                </button>
                 <button className="btn-editar">Editar</button>
               </section>
             );
