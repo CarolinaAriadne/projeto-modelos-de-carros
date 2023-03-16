@@ -142,7 +142,6 @@ export default function CarsPage() {
                 >
                   Editar
                 </button>
-                <section className="container-modal"></section>
               </section>
             );
           })}

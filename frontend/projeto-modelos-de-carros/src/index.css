@@ -112,12 +112,6 @@ h1 {
   cursor: pointer;
 }
 
-.container-modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .modal-overlay {
   display: flex;
   justify-content: center;
