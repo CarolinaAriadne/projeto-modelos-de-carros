@@ -43,3 +43,30 @@ h1 {
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
   width: 100%;
 }
+
+
+.container-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E0FFFF;
+  position: fixed;
+  top:0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 500px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}

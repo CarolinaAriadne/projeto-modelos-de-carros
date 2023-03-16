@@ -13,6 +13,7 @@ const getAllCars = async () => {
 
 const getOneCar = async codigo => {
   const car = await carsModel.getOneCar(codigo);
+  console.log(car);
 
   if (car.length === 0) {
     throw erroHandler(404, 'Car not found');

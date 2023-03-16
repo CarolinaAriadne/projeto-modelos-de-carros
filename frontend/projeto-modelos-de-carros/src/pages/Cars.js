@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
+import Modal from 'react-modal';
 
 export default function CarsPage() {
   const [cars, setCars] = useState([]);
+  const [oneCar, setCar] = useState([{ codigo: 0, modelo: '', placa: '' }]);
   const [modelo, setModelo] = useState('');
   const [placa, setPlaca] = useState('');
   const [disabled, setDisabled] = useState(true);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -40,6 +43,39 @@ export default function CarsPage() {
         return car.codigo !== codigo;
       });
       setCars(newArrayWithoutCar);
+    } catch (err) {
+      setError('Bad request');
+    }
+  };
+
+  const openModal = codigo => {
+    setIsOpen(true);
+
+    getOneCar(codigo);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setModelo('');
+    setPlaca('');
+  };
+
+  const getOneCar = async codigo => {
+    try {
+      let response = await api.get(`/car/${codigo}`);
+      setCar(response.data);
+      setModelo(response.data[0].modelo);
+      setPlaca(response.data[0].placa);
+    } catch (err) {
+      setError('Bad request');
+    }
+  };
+
+  const updateCar = async oneCar => {
+    let code = oneCar[0].codigo;
+    try {
+      await api.put(`/car/${code}`, { modelo, placa });
+      alert('Sua mudança foi realizada com sucesso!');
     } catch (err) {
       setError('Bad request');
     }
@@ -96,16 +132,55 @@ export default function CarsPage() {
                 </p>
                 <button
                   className="btn-excluir"
-									type="button"
+                  type="button"
                   onClick={() => removeCar(car.codigo)}
                 >
                   Excluir
                 </button>
-                <button className="btn-editar">Editar</button>
+                <button
+                  className="btn-editar"
+                  type="button"
+                  onClick={() => openModal(car.codigo)}
+                >
+                  Editar
+                </button>
+                <section className="container-modal"></section>
               </section>
             );
           })}
         </section>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          overlayClassName="modal-overlay"
+          className="modal-content"
+        >
+          <input
+            placeholder="modelo"
+            name="modelo"
+            type="text"
+            onChange={({ target }) => setModelo(target.value)}
+            value={modelo}
+          ></input>
+          <input
+            placeholder="placa"
+            name="placa"
+            type="text"
+            onChange={({ target }) => setPlaca(target.value)}
+            onKeyUp={disableSubmit}
+            value={placa}
+          ></input>
+          <button type="button" onClick={closeModal}>
+            Voltar
+          </button>
+          <button
+            type="submit"
+            disabled={disabled}
+            onClick={() => updateCar(oneCar)}
+          >
+            Salvar
+          </button>
+        </Modal>
         <section>{error && <p>{error}</p>}</section>
       </section>
     </form>
