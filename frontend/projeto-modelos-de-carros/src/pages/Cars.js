@@ -103,7 +103,6 @@ export default function CarsPage() {
       <section className="main-container">
         <section className="new-car-container">
           <input
-            className="inputModelo"
             placeholder="modelo"
             name="modelo"
             type="text"
@@ -111,7 +110,6 @@ export default function CarsPage() {
             value={modelo}
           ></input>
           <input
-            className="inputPlaca"
             placeholder="placa"
             name="placa"
             type="text"
@@ -119,7 +117,7 @@ export default function CarsPage() {
             onKeyUp={disableSubmit}
             value={placa}
           ></input>
-          <button type="submit" disabled={disabled}>
+          <button className="newCarButton" type="submit" disabled={disabled}>
             Criar
           </button>
         </section>
@@ -127,18 +125,18 @@ export default function CarsPage() {
           {cars.map(car => {
             return (
               <section className="all-cars-container">
-                <p key={car.codigo}>
+                <p className="p-addCar" key={car.codigo}>
                   {car.modelo} {car.placa}
                 </p>
                 <button
-                  className="btn-excluir"
+                  className="btn-ex-edit"
                   type="button"
                   onClick={() => removeCar(car.codigo)}
                 >
                   Excluir
                 </button>
                 <button
-                  className="btn-editar"
+                  className="btn-ex-edit"
                   type="button"
                   onClick={() => openModal(car.codigo)}
                 >
@@ -156,6 +154,7 @@ export default function CarsPage() {
           className="modal-content"
         >
           <input
+            className="inputModal"
             placeholder="modelo"
             name="modelo"
             type="text"
@@ -163,6 +162,7 @@ export default function CarsPage() {
             value={modelo}
           ></input>
           <input
+            className="inputModal"
             placeholder="placa"
             name="placa"
             type="text"
@@ -170,10 +170,15 @@ export default function CarsPage() {
             onKeyUp={disableSubmit}
             value={placa}
           ></input>
-          <button type="button" onClick={closeModal}>
+          <button
+            className="btnSalvarVoltar"
+            type="button"
+            onClick={closeModal}
+          >
             Voltar
           </button>
           <button
+            className="btnSalvarVoltar"
             type="submit"
             disabled={disabled}
             onClick={() => updateCar(oneCar)}
@@ -181,8 +186,8 @@ export default function CarsPage() {
             Salvar
           </button>
         </Modal>
-        <section>{error && <p>{error}</p>}</section>
       </section>
+      <section>{error && <p className="error">{error}</p>}</section>
     </form>
   );
 }

@@ -1,15 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  font-family: "Raleway", sans-serif;
-  background-image: url("../src/images/1218517-fundo-gradiente-holografico-colorido-gratis-vetor.jpg");
+  font-family: 'Raleway', sans-serif;
+  background-image: url('../src/images/1218517-fundo-gradiente-holografico-colorido-gratis-vetor.jpg');
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -30,7 +30,53 @@ h1 {
   padding: 20px;
 }
 
-.main-container {}
+.main-container {
+  border: 2px solid #fff;
+  padding: 30px 40px;
+  min-width: 500px;
+  width: 100%;
+  max-height: 575px;
+  overflow-y: scroll;
+}
+
+.new-car-container {
+  background-color: #fff;
+  padding: 30px 20px;
+  border-radius: 5px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+}
+
+.new-car-container input {
+  flex: 3;
+  font-size: 1rem;
+  border: 2px solid #d1d3d4;
+  border-radius: 5px;
+  padding: 12px;
+  margin-left: 8.5px;
+  font-weight: 500;
+}
+
+.new-car-container input:focus {
+  outline: none;
+  border-color: thistle;
+}
+
+.newCarButton {
+  flex: 1;
+  border-radius: 5px;
+  font-weight: 500;
+  height: 100%;
+  width: 100px;
+  font-size: 1rem;
+  border: none;
+  background-color: thistle;
+  color: #fff;
+  padding: 12px;
+  margin-left: 12px;
+  margin-top: 4.9;
+  cursor: pointer;
+}
 
 .all-cars-container {
   display: flex;
@@ -44,6 +90,27 @@ h1 {
   width: 100%;
 }
 
+.p-addCar {
+  display: block;
+  align-items: center;
+  width: 80%;
+}
+
+.btn-ex-edit {
+  display: block;
+  flex: 1;
+  border-radius: 5px;
+  font-weight: 500;
+  height: 100%;
+  width: 100px;
+  font-size: 1rem;
+  border: none;
+  background-color: thistle;
+  color: #fff;
+  margin-left: 200px;
+  padding: 12px;
+  cursor: pointer;
+}
 
 .container-modal {
   display: flex;
@@ -55,18 +122,59 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #E0FFFF;
+  background-color: thistle;
   position: fixed;
-  top:0;
+  top: 0;
   bottom: 0;
   right: 0;
   left: 0;
 }
 
 .modal-content {
-  width: 100%;
-  max-width: 500px;
-  background-color: white;
-  padding: 10px;
+  background-color: #fff;
+  padding: 30px 20px;
   border-radius: 5px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+}
+
+.inputModal:focus {
+  outline: none;
+  border-color: thistle;
+}
+
+.inputModal {
+  flex: 3;
+  font-size: 1rem;
+  border: 2px solid #d1d3d4;
+  border-radius: 5px;
+  padding: 12px;
+  margin-left: 8.5px;
+  font-weight: 500;
+  margin-top: 7px;
+}
+
+.btnSalvarVoltar {
+  flex: 1;
+  border-radius: 5px;
+  font-weight: 500;
+  height: 100%;
+  width: 100px;
+  font-size: 1rem;
+  border: none;
+  background-color: thistle;
+  color: #fff;
+  padding: 12px;
+  margin-left: 12px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.error {
+  font-size: 18px;
+  width: 100%;
+  height: 0.5rem;
+  border-radius: 0.8rem;
+  margin-top: 15px;
+  text-align: center;
 }
