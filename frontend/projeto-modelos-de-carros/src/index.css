@@ -9,7 +9,7 @@
 
 body {
   font-family: 'Raleway', sans-serif;
-  background-image: url('../src/images/1218517-fundo-gradiente-holografico-colorido-gratis-vetor.jpg');
+  background-image: url('../src/images/lilás.jpg');
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -70,7 +70,7 @@ h1 {
   width: 100px;
   font-size: 1rem;
   border: none;
-  background-color: thistle;
+  background-color: #b393d3;
   color: #fff;
   padding: 12px;
   margin-left: 12px;
@@ -105,7 +105,7 @@ h1 {
   width: 100px;
   font-size: 1rem;
   border: none;
-  background-color: thistle;
+  background-color: #b393d3;
   color: #fff;
   margin-left: 200px;
   padding: 12px;
